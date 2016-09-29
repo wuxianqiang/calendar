@@ -1,0 +1,60 @@
+<!doctype html>
+<html>
+
+<head>
+    <title>日历小插件(节气+节日+农历)</title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="calendar.css">
+</head>
+
+<body onload=initial() class="calendar-body">
+    <form name=CLD>
+        <table border=1 cellpadding="0" cellspacing="0" bordercolordark="#e0e0e0" bordercolor="#e0e0e0" bordercolorlight="#e0e0e0">
+            <tr class="calendar-top-box">
+                <td colSpan=7>
+                    <span class="calendar-top">公历 
+                        <select name=SY onchange=changeCld()> 
+                            <script language="Javascript">
+                                for(i=1900;i<2050;i++) document.write('<option>'+i);
+                            </script>
+                        </select> 年 
+                        <select name=SM onchange=changeCld()> 
+                            <script language="Javascript">
+                                for(i=1;i<13;i++) document.write('<option>'+i);
+                            </script>
+                        </select> 月 
+                    </span>
+                    <span class="calendar-animal" id="GZ">
+                        <!--这里显示属相-->
+                    </span>
+                </td>
+            </tr>
+            <tr class="calendar-week">
+                <td>日</td>
+                <td>一</td>
+                <td>二</td>
+                <td>三</td>
+                <td>四</td>
+                <td>五</td>
+                <td>六</td>
+            </tr>
+            <script language="Javascript">
+                var gNum;
+                for (i = 0; i < 6; i++) {
+                    document.write('<tr class="calendar-num-tr">');
+                    for (j = 0; j < 7; j++) {
+                        gNum = i * 7 + j;
+                        document.write('<td id="GD' + gNum + '"><font id="SD' + gNum + '" class="calendar-num"');
+                        if (j == 0) document.write(' color=red');
+                        if (j == 6) document.write(' color=red');
+                        document.write('> </font><br><font id="LD' + gNum + '" class="calendar-Chinese"> </font></td>');
+                    }
+                    document.write('</tr>');
+                }
+            </script>
+        </table>
+    </form>
+    <script src="calendar.js"></script>
+</body>
+
+</html>
